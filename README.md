@@ -2,13 +2,13 @@
 
 ## Overview
 
-The MCP Credit Report Demo achitecture consists of a three-tier separation: a Next.js UI (port 3000) 
-for presentation, a Hono API Server (port 3002) for orchestration and GPT-4o summarization based on an 
-MCP client, and a FastMCP Server (port 3001) for Equifax credit report data with
+The MCP Credit Report Demo architecture consists of a three-tier separation: a Next.js UI
+for presentation, a Hono API Server for orchestration and GPT-4o summarization based on an 
+MCP client, and a FastMCP Server for Equifax credit report data with
 OAuth handling, where each layer operates independently with strict credential isolation and Zod validation 
 at system boundaries to enable secure, scalable component replacement.
 
-It features a three-process TypeScript application that fetches a consumer credit report from the Equifax sandbox API and summarises it with GPT-4o. 
+It features a three-process TypeScript application that fetches a consumer credit report from the Equifax sandbox API and summarizes it with GPT-4o. 
 
 ---
 
