@@ -1,0 +1,22 @@
+{
+  "name": "equifax-api-server",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1",
+    "@modelcontextprotocol/sdk": "^1",
+    "dotenv": "^16",
+    "hono": "^4",
+    "openai": "^6"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "tsx": "^4",
+    "typescript": "^5"
+  }
+}
