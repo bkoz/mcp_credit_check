@@ -1,0 +1,54 @@
+{
+  "consumers": {
+    "name": [
+      {
+        "identifier": "current",
+        "firstName": "John",
+        "lastName": "Doe"
+      }
+    ],
+    "socialNum": [
+      {
+        "identifier": "current",
+        "number": "666123456"
+      }
+    ],
+    "addresses": [
+      {
+        "identifier": "current",
+        "houseNumber": "123",
+        "streetName": "Main",
+        "streetType": "St",
+        "city": "Atlanta",
+        "state": "GA",
+        "zip": "30374"
+      }
+    ]
+  },
+  "customerReferenceIdentifier": "BasicCreditRequest",
+  "customerConfiguration": {
+    "equifaxUSConsumerCreditReport": {
+      "pdfComboIndicator": "Y",
+      "memberNumber": "999XX12345",
+      "securityCode": "@U2",
+      "customerCode": "IAPI",
+      "multipleReportIndicator": "1",
+      "models": [
+        {
+          "identifier": "02799",
+          "modelField": [
+            "3",
+            "GA"
+          ]
+        },
+        {
+          "identifier": "05143"
+        },
+        {
+          "identifier": "02801"
+        }
+      ],
+      "ECOAInquiryType": "Individual"
+    }
+  }
+}

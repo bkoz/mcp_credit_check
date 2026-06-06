@@ -77,7 +77,7 @@ function main() {
                         process.exit(1);
                     }
                     console.log("Token obtained successfully.");
-                    consumer = JSON.parse(fs.readFileSync(path.join(__dirname, "consumer.json"), "utf-8"));
+                    consumer = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "consumer.json"), "utf-8"));
                     return [4 /*yield*/, fetch(CREDIT_URL, {
                             method: "POST",
                             headers: {
