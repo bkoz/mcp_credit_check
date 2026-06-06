@@ -70,7 +70,7 @@ export function buildConsumerPayload(form: ConsumerFormData) {
         },
       ],
     },
-    customerReferenceidentifier: "2C800002-DOR7",
+    customerReferenceIdentifier: "BasicCreditRequest",
     customerConfiguration: {
       equifaxUSConsumerCreditReport: {
         pdfComboIndicator: "Y",
@@ -79,23 +79,11 @@ export function buildConsumerPayload(form: ConsumerFormData) {
         customerCode: "IAPI",
         multipleReportIndicator: "1",
         models: [
-          { identifier: "02778", modelField: ["3", form.state.toUpperCase()] },
+          { identifier: "02799", modelField: ["3", form.state.toUpperCase()] },
           { identifier: "05143" },
-          { identifier: "02916" },
+          { identifier: "02801" },
         ],
         ECOAInquiryType: "Individual",
-      },
-      equifaxUSConsumerTwnRequest: {
-        userId: "twnUser@1234",
-        userPassword: "pass123",
-        permissiblePurposeCode: "PPASSESS",
-        templateName: "Full VOI",
-      },
-      equifaxUSConsumerDataxInquiryRequest: {
-        authentication: {
-          licensekey: "licenseKey123",
-          password: "passwd123",
-        },
       },
     },
   };

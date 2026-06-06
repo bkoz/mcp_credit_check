@@ -41,7 +41,7 @@ async function main() {
 
   // Step 2: Fetch credit report
   const consumer = JSON.parse(
-    fs.readFileSync(path.join(__dirname, "consumer.json"), "utf-8")
+    fs.readFileSync(path.join(__dirname, "..", "consumer.json"), "utf-8")
   );
 
   const reportResponse = await fetch(CREDIT_URL, {

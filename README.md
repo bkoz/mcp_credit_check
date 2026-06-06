@@ -75,6 +75,28 @@ Open [http://localhost:3000](http://localhost:3000), review the pre-populated co
 
 ---
 
+## Testing Script
+
+A standalone test script is available in `testing/api_call.ts` that demonstrates the full flow without the web UI:
+
+```bash
+cd testing
+
+export EQUIFAX_USERNAME=your_equifax_username_here
+export EQUIFAX_PASSWORD=your_equifax_password_here
+export GITHUB_TOKEN=your_github_token_here
+
+npx tsx api_call.ts
+```
+
+This script:
+1. Obtains an OAuth token from Equifax
+2. Fetches a credit report using the data from `consumer.json`
+3. Summarizes the report with GPT-4o via GitHub Models
+4. Prints the summary to the console
+
+---
+
 ## Key Dependencies
 
 | Package | Process | Purpose |
