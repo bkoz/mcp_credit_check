@@ -48,7 +48,30 @@ The full architecture is documented in [`docs/architecture.pdf`](./docs/architec
 
 ## Running the App
 
-Three terminals are required:
+### Quick Start (Recommended)
+
+Start all three services with a single command:
+
+```bash
+# Option 1: Using npm script
+npm run dev:all
+
+# Option 2: Running script directly
+./start-all.sh
+```
+
+This will start:
+- MCP Server on port 3001
+- API Server on port 3002
+- Next.js UI on port 3000
+
+Logs are written to `logs/` directory. Press `Ctrl+C` to stop all services.
+
+Open [http://localhost:3000](http://localhost:3000), review the pre-populated consumer data, and click **Get Credit Report**.
+
+### Manual Start (Alternative)
+
+If you prefer to run each service in a separate terminal:
 
 ```bash
 # Terminal 1 — MCP server (port 3001)
@@ -60,8 +83,6 @@ cd api-server && npm run dev
 # Terminal 3 — Next.js (port 3000)
 npm run dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000), review the pre-populated consumer data, and click **Get Credit Report**.
 
 ---
 
