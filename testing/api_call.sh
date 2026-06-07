@@ -3,8 +3,8 @@
 #
 # Step 1: Obtain an Oauth token and create an authorization header using the following info:
 #
-USERNAME="${EQUIFAX_USERNAME}"
-PASSWORD="${EQUIFAX_PASSWORD}"
+USERNAME="${EQUIFAX_CLIENT_ID}"
+PASSWORD="${EQUIFAX_CLIENT_SECRET}"
 TOKEN_URL="https://api.sandbox.equifax.com/v2/oauth/token"
 
 #

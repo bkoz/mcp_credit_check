@@ -46,6 +46,18 @@ The full architecture is documented in [`docs/architecture.pdf`](./docs/architec
 3. Equifax developer sandbox credentials
 4. A GitHub account with LLM access 
 
+---
+
+## Environment Variables
+
+| Variable | File | Used by |
+|----------|------|---------|
+| `EQUIFAX_CLIENT_ID` | `.env.local`, `mcp-server/.env` | MCP Server — Equifax OAuth |
+| `EQUIFAX_CLIENT_SECRET` | `.env.local`, `mcp-server/.env` | MCP Server — Equifax OAuth |
+| `GITHUB_TOKEN` | `api-server/.env` | API Server — GitHub Models (GPT-4o) |
+
+---
+
 ## Running the App
 
 ### Quick Start (Recommended)
@@ -86,16 +98,6 @@ npm run dev
 
 ---
 
-## Environment Variables
-
-| Variable | File | Used by |
-|----------|------|---------|
-| `EQUIFAX_USERNAME` | `.env.local`, `mcp-server/.env` | MCP Server — Equifax OAuth |
-| `EQUIFAX_PASSWORD` | `.env.local`, `mcp-server/.env` | MCP Server — Equifax OAuth |
-| `GITHUB_TOKEN` | `api-server/.env` | API Server — GitHub Models (GPT-4o) |
-
----
-
 ## Testing Script
 
 A standalone test script is available in `testing/api_call.ts` that demonstrates the full flow without the web UI:
@@ -103,8 +105,8 @@ A standalone test script is available in `testing/api_call.ts` that demonstrates
 ```bash
 cd testing
 
-export EQUIFAX_USERNAME=your_equifax_username_here
-export EQUIFAX_PASSWORD=your_equifax_password_here
+export EQUIFAX_CLIENT_ID=your_equifax_client_id_here
+export EQUIFAX_CLIENT_SECRET=your_equifax_client_secret_here
 export GITHUB_TOKEN=your_github_token_here
 
 npx tsx api_call.ts

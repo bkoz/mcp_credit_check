@@ -15,11 +15,11 @@ const CREDIT_URL =
   "https://api.sandbox.equifax.com/business/oneview/consumer-credit/v1/reports/credit-report";
 
 export async function getEquifaxToken(): Promise<string> {
-  const username = process.env.EQUIFAX_USERNAME;
-  const password = process.env.EQUIFAX_PASSWORD;
+  const username = process.env.EQUIFAX_CLIENT_ID;
+  const password = process.env.EQUIFAX_CLIENT_SECRET;
 
   if (!username || !password) {
-    throw new Error("EQUIFAX_USERNAME and EQUIFAX_PASSWORD must be set");
+    throw new Error("EQUIFAX_CLIENT_ID and EQUIFAX_CLIENT_SECRET must be set");
   }
 
   const credentials = Buffer.from(`${username}:${password}`).toString("base64");
