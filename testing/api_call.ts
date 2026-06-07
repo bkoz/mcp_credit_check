@@ -5,8 +5,8 @@ import OpenAI from "openai";
 //
 // Step 1: Obtain an OAuth token
 //
-const USERNAME = process.env.EQUIFAX_USERNAME;
-const PASSWORD = process.env.EQUIFAX_PASSWORD;
+const USERNAME = process.env.EQUIFAX_CLIENT_ID;
+const PASSWORD = process.env.EQUIFAX_CLIENT_SECRET;
 const TOKEN_URL = "https://api.sandbox.equifax.com/v2/oauth/token";
 
 //

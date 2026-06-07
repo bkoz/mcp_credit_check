@@ -42,8 +42,8 @@ var openai_1 = require("openai");
 //
 // Step 1: Obtain an OAuth token
 //
-var USERNAME = process.env.EQUIFAX_USERNAME;
-var PASSWORD = process.env.EQUIFAX_PASSWORD;
+var USERNAME = process.env.EQUIFAX_CLIENT_ID;
+var PASSWORD = process.env.EQUIFAX_CLIENT_SECRET;
 var TOKEN_URL = "https://api.sandbox.equifax.com/v2/oauth/token";
 //
 // Step 2: Using the token, obtain a credit report

@@ -2,8 +2,8 @@
 
 set -x  # Enable debug mode
 
-USERNAME="${EQUIFAX_USERNAME}"
-PASSWORD="${EQUIFAX_PASSWORD}"
+USERNAME="${EQUIFAX_CLIENT_ID}"
+PASSWORD="${EQUIFAX_CLIENT_SECRET}"
 TOKEN_URL="https://api.sandbox.equifax.com/v2/oauth/token"
 CREDIT_URL="https://api.sandbox.equifax.com/business/oneview/consumer-credit/v1/reports/credit-report"
 
