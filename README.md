@@ -46,6 +46,18 @@ The full architecture is documented in [`docs/architecture.pdf`](./docs/architec
 3. Equifax developer sandbox credentials
 4. A GitHub account with LLM access 
 
+---
+
+## Environment Variables
+
+| Variable | File | Used by |
+|----------|------|---------|
+| `EQUIFAX_CLIENT_ID` | `.env.local`, `mcp-server/.env` | MCP Server — Equifax OAuth |
+| `EQUIFAX_CLIENT_SECRET` | `.env.local`, `mcp-server/.env` | MCP Server — Equifax OAuth |
+| `GITHUB_TOKEN` | `api-server/.env` | API Server — GitHub Models (GPT-4o) |
+
+---
+
 ## Running the App
 
 ### Quick Start (Recommended)
@@ -83,16 +95,6 @@ cd api-server && npm run dev
 # Terminal 3 — Next.js (port 3000)
 npm run dev
 ```
-
----
-
-## Environment Variables
-
-| Variable | File | Used by |
-|----------|------|---------|
-| `EQUIFAX_CLIENT_ID` | `.env.local`, `mcp-server/.env` | MCP Server — Equifax OAuth |
-| `EQUIFAX_CLIENT_SECRET` | `.env.local`, `mcp-server/.env` | MCP Server — Equifax OAuth |
-| `GITHUB_TOKEN` | `api-server/.env` | API Server — GitHub Models (GPT-4o) |
 
 ---
 
