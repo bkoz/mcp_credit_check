@@ -81,6 +81,8 @@ Logs are written to `logs/` directory. Press `Ctrl+C` to stop all services.
 
 Open [http://localhost:3000](http://localhost:3000), review the pre-populated consumer data, and click **Get Credit Report**.
 
+![MCP Credit Report Demo UI](docs/mcp_credit_01.png)
+
 ### Manual Start (Alternative)
 
 If you prefer to run each service in a separate terminal:
