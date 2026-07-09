@@ -14,6 +14,8 @@ It features a three-process TypeScript application that fetches a consumer credi
 
 ## Architecture Overview
 
+![Architecture Diagram](docs/architecture-diagram-1.png)
+
 The full architecture is documented in [`docs/architecture.pdf`](./docs/architecture.pdf).
 
 | Process | Port | Role |
@@ -121,17 +123,3 @@ This script:
 4. Prints the summary to the console
 
 ---
-
-## Key Dependencies
-
-| Package | Process | Purpose |
-|---------|---------|---------|
-| `next`, `react`, `react-dom` | Next.js | React framework |
-| `react-markdown` | Next.js | Render LLM markdown as HTML |
-| `tailwindcss` | Next.js | Utility-first CSS |
-| `hono`, `@hono/node-server` | API Server | HTTP framework |
-| `@modelcontextprotocol/sdk` | API Server | MCP client transport |
-| `openai` | API Server | GPT-4o via GitHub Models |
-| `fastmcp` | MCP Server | MCP server framework |
-| `zod` | MCP Server | Tool parameter validation |
-| `dotenv` | API + MCP Server | Environment variable loading |
