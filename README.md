@@ -2,6 +2,20 @@
 
 ## Overview
 
+This demo showcases how the Model Context Protocol (MCP) enables a modular, secure AI application architecture by fetching Equifax credit reports and generating natural language summaries with GPT-4o. Unlike a monolithic approach where the UI, business logic, LLM calls and data fetching are tightly coupled in a single codebase, the MCP pattern separates these concerns into independent services. 
+
+This separation provides key advantages: 
+
+- Credentials remain isolated in their respective layers (Equifax keys never leave the MCP server, GitHub tokens stay in the API layer)
+- Each component can be independently scaled or replaced without affecting others.
+- The MCP server becomes a reusable tool that any MCP-compatible client can consume — not just this demo's UI. 
+
+The result is a more secure, maintainable, and extensible architecture that demonstrates MCP's value for production AI systems.
+
+---
+
+## Architecture 
+
 The MCP Credit Report Demo architecture consists of a three-tier separation: a Next.js UI
 for presentation, a Hono API Server for orchestration and GPT-4o summarization based on an 
 MCP client, and a FastMCP Server for Equifax credit report data with
@@ -9,10 +23,6 @@ OAuth handling, where each layer operates independently with strict credential i
 at system boundaries to enable secure, scalable component replacement.
 
 It features a three-process TypeScript application that fetches a consumer credit report from the Equifax sandbox API and summarizes it with GPT-4o. 
-
----
-
-## Architecture Overview
 
 ![Architecture Diagram](docs/architecture-diagram-1.png)
 
