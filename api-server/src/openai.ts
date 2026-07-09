@@ -19,7 +19,7 @@ export async function summarizeCreditReport(
       {
         role: "system",
         content:
-          "You are a financial analyst. Summarize the following credit report in plain English, highlighting key details such as credit score, account standing, payment history, and any alerts or flags.",
+          "You are a senior loan underwriter. Summarize the following credit report in plain English, highlighting key details such as credit score, account standing, payment history, and any alerts or flags.",
       },
       {
         role: "user",
