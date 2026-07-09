@@ -18,24 +18,26 @@ It features a three-process TypeScript application that fetches a consumer credi
 
 The full architecture is documented in [`docs/architecture.pdf`](./docs/architecture.pdf).
 
+### Services
+
 | Process | Port | Role |
 |---------|------|------|
 | **Next.js** | 3000 | React UI + thin HTTP proxy |
 | **API Server** (Hono) | 3002 | MCP client + LLM summarisation |
 | **MCP Server** (FastMCP) | 3001 | Equifax data fetching only |
 
-### Next.js — Presentation layer
+#### Next.js — Presentation layer
 - Serves the React UI — a pre-populated consumer form read from `consumer.json`
 - Handles form state and submits to `/api/credit-report`
 - Renders the LLM's markdown response as styled HTML via `react-markdown`
 - The API route (`POST /api/credit-report`) is a **thin proxy** — it forwards the request to the API server and returns the response with no business logic
 
-### API Server — Business logic layer
+#### API Server — Business logic layer
 - Built with **Hono** on Node.js
 - Connects to the MCP server via `StreamableHTTPClientTransport`, calls the `get_credit_report` tool, parses the JSON result, then calls an LLM to produce a plain-English summary
 - All MCP client code and LLM interaction lives here
 
-### MCP Server — Data layer
+#### MCP Server — Data layer
 - Built with **FastMCP** using the Streamable HTTP transport (`/mcp` on port 3001)
 - Exposes one tool: `get_credit_report` — validates consumer fields with Zod, fetches an OAuth token from Equifax, posts the OneView credit request, extracts key fields, and returns raw JSON
 - No LLM calls — purely a data-fetching layer
