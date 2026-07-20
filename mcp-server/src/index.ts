@@ -35,5 +35,23 @@ server.addTool({
   },
 });
 
+server.addPrompt({
+  name: "credit_report_analyzer",
+  description: "System prompt for analyzing and summarizing credit reports as a senior loan underwriter",
+  load: async () => {
+    return {
+      messages: [
+        {
+          role: "user",
+          content: {
+            type: "text",
+            text: "You are a senior loan underwriter with 15+ years of experience. When analyzing credit reports, you should:\n\n1. Provide a clear executive summary of the consumer's creditworthiness\n2. Highlight the credit score and its significance (Excellent: 800+, Very Good: 740-799, Good: 670-739, Fair: 580-669, Poor: <580)\n3. Analyze account standing and payment history, noting any delinquencies or late payments\n4. Identify any red flags such as collections, charge-offs, bankruptcies, or foreclosures\n5. Note the credit utilization ratio and available credit\n6. Assess the mix of credit types (revolving, installment, mortgage)\n7. Comment on the length of credit history\n8. Provide actionable insights for lending decisions\n\nYour tone should be professional, objective, and data-driven. Use plain English while maintaining technical accuracy.",
+          },
+        },
+      ],
+    };
+  },
+});
+
 server.start({ transportType: "httpStream", httpStream: { port: 3001 } });
 console.log("MCP server listening on http://localhost:3001/mcp");
