@@ -1,7 +1,8 @@
 import OpenAI from "openai";
 
 export async function summarizeCreditReport(
-  summary: Record<string, unknown>
+  summary: Record<string, unknown>,
+  systemPrompt: string
 ): Promise<string> {
   const githubToken = process.env.GITHUB_TOKEN;
   if (!githubToken) {
@@ -18,8 +19,7 @@ export async function summarizeCreditReport(
     messages: [
       {
         role: "system",
-        content:
-          "You are a senior loan underwriter. Summarize the following credit report in plain English, highlighting key details such as credit score, account standing, payment history, and any alerts or flags.",
+        content: systemPrompt,
       },
       {
         role: "user",
