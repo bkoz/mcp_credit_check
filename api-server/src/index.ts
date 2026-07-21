@@ -9,7 +9,8 @@ const app = new Hono();
 
 app.post("/credit-report", async (c) => {
   const form = await c.req.json();
-  const transport = new StreamableHTTPClientTransport(new URL("http://localhost:3001/mcp"));
+  const mcpServerUrl = process.env.MCP_SERVER_URL || "http://localhost:3001/mcp";
+  const transport = new StreamableHTTPClientTransport(new URL(mcpServerUrl));
   const client = new Client({ name: "equifax-api", version: "1.0.0" });
   try {
     await client.connect(transport);
