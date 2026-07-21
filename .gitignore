@@ -22,3 +22,13 @@ dist/
 # Logs
 *.log
 npm-debug.log*
+
+# OpenShift secrets (NEVER commit these)
+openshift/**/secrets.yaml
+openshift/overlays/*/secrets.yaml
+openshift/overlays/dev/secrets.yaml
+openshift/overlays/prod/secrets.yaml
+
+# Local kustomize overrides
+openshift/**/*.local.yaml
+openshift/**/kustomization.local.yaml

@@ -26,6 +26,12 @@ preview-prod:
 	oc kustomize overlays/prod
 
 deploy-dev:
+	@if [ ! -f overlays/dev/secrets.yaml ]; then \
+		echo "❌ Error: overlays/dev/secrets.yaml not found"; \
+		echo "Run: cp overlays/dev/secrets.yaml.template overlays/dev/secrets.yaml"; \
+		echo "Then edit secrets.yaml with your credentials"; \
+		exit 1; \
+	fi
 	@echo "Deploying to development..."
 	oc apply -k overlays/dev
 	@echo "Waiting for rollout..."
@@ -36,6 +42,17 @@ deploy-dev:
 	@echo "URL: https://$$(oc get route dev-nextjs -n mcp-credit-report-dev -o jsonpath='{.spec.host}')"
 
 deploy-prod:
+	@if [ ! -f overlays/prod/secrets.yaml ]; then \
+		echo "❌ Error: overlays/prod/secrets.yaml not found"; \
+		echo "Run: cp overlays/prod/secrets.yaml.template overlays/prod/secrets.yaml"; \
+		echo "Then edit secrets.yaml with your PRODUCTION credentials"; \
+		exit 1; \
+	fi
+	@if grep -q "REPLACE_WITH_YOUR" overlays/prod/secrets.yaml; then \
+		echo "❌ Error: Production secrets contain placeholder values"; \
+		echo "Update overlays/prod/secrets.yaml with actual credentials"; \
+		exit 1; \
+	fi
 	@echo "⚠️  Deploying to PRODUCTION..."
 	@read -p "Type 'yes' to continue: " confirm && [ "$$confirm" = "yes" ] || exit 1
 	oc apply -k overlays/prod

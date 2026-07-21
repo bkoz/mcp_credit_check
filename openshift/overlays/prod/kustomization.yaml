@@ -8,14 +8,10 @@ namePrefix: prod-
 bases:
   - ../../base
 
-secretGenerator:
-  - name: equifax-credentials
-    literals:
-      - EQUIFAX_CLIENT_ID=your_production_equifax_client_id_here
-      - EQUIFAX_CLIENT_SECRET=your_production_equifax_client_secret_here
-  - name: github-token
-    literals:
-      - GITHUB_TOKEN=your_production_github_token_here
+# Secrets are managed separately - see secrets.yaml.template
+# Copy secrets.yaml.template to secrets.yaml and fill in your credentials
+resources:
+  - secrets.yaml
 
 patchesStrategicMerge:
   - namespace.yaml

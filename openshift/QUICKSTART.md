@@ -15,20 +15,30 @@ Deploy the MCP Credit Report Demo to OpenShift in 5 minutes.
 oc login <your-cluster-url>
 ```
 
-## Step 2: Update Credentials
+## Step 2: Setup Credentials
 
-Edit `overlays/dev/kustomization.yaml` and replace the placeholder values:
+**Option A: Interactive Setup (Recommended)**
 
-```yaml
-secretGenerator:
-  - name: equifax-credentials
-    literals:
-      - EQUIFAX_CLIENT_ID=YOUR_ACTUAL_CLIENT_ID
-      - EQUIFAX_CLIENT_SECRET=YOUR_ACTUAL_CLIENT_SECRET
-  - name: github-token
-    literals:
-      - GITHUB_TOKEN=YOUR_ACTUAL_GITHUB_TOKEN
+```bash
+cd openshift
+./setup-secrets.sh
+# Follow the prompts to enter your credentials
 ```
+
+**Option B: Manual Setup**
+
+```bash
+cd openshift/overlays/dev
+
+# Create secrets file from template
+cp secrets.yaml.template secrets.yaml
+
+# Edit with your credentials
+vim secrets.yaml
+# Replace all "REPLACE_WITH_YOUR_*" values with actual credentials
+```
+
+**Security Note:** secrets.yaml files are in .gitignore and will NOT be committed to Git.
 
 ## Step 3: Update Git Repository
 

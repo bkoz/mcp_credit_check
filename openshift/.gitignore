@@ -1,0 +1,29 @@
+# Secrets and sensitive files
+secrets.yaml
+secrets-*.yaml
+**/secrets.yaml
+**/secrets-*.yaml
+
+# Environment-specific secret files
+overlays/dev/secrets.yaml
+overlays/prod/secrets.yaml
+overlays/*/secrets.yaml
+
+# Local overrides
+kustomization.local.yaml
+*.local.yaml
+
+# Generated manifests (may contain secrets)
+*.generated.yaml
+generated/
+
+# Backup files
+*.bak
+*.backup
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

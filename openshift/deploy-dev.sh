@@ -29,6 +29,31 @@ fi
 
 echo -e "${GREEN}✓${NC} Logged in as: $(oc whoami)"
 
+# Check for secrets file
+if [ ! -f "$OVERLAY/secrets.yaml" ]; then
+    echo -e "\n${RED}Error: secrets.yaml not found${NC}"
+    echo -e "${YELLOW}Please create secrets file:${NC}"
+    echo "  cd $OVERLAY"
+    echo "  cp secrets.yaml.template secrets.yaml"
+    echo "  # Edit secrets.yaml with your credentials"
+    echo ""
+    echo "See SECRETS_MANAGEMENT.md for details"
+    exit 1
+fi
+
+echo -e "${GREEN}✓${NC} Found secrets.yaml"
+
+# Check if secrets contain placeholder values
+if grep -q "REPLACE_WITH_YOUR" "$OVERLAY/secrets.yaml"; then
+    echo -e "\n${YELLOW}⚠️  Warning: secrets.yaml contains placeholder values${NC}"
+    echo "Please update secrets.yaml with actual credentials"
+    read -p "Continue anyway? (y/N) " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        exit 0
+    fi
+fi
+
 # Preview manifests
 echo -e "\n${BLUE}Previewing manifests...${NC}"
 oc kustomize $OVERLAY | head -50

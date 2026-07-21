@@ -29,6 +29,36 @@ fi
 
 echo -e "${GREEN}✓${NC} Logged in as: $(oc whoami)"
 
+# Check for secrets file
+if [ ! -f "$OVERLAY/secrets.yaml" ]; then
+    echo -e "\n${RED}Error: secrets.yaml not found${NC}"
+    echo -e "${YELLOW}Please create secrets file:${NC}"
+    echo "  cd $OVERLAY"
+    echo "  cp secrets.yaml.template secrets.yaml"
+    echo "  # Edit secrets.yaml with your PRODUCTION credentials"
+    echo ""
+    echo "See SECRETS_MANAGEMENT.md for details"
+    exit 1
+fi
+
+echo -e "${GREEN}✓${NC} Found secrets.yaml"
+
+# Check if secrets contain placeholder values
+if grep -q "REPLACE_WITH_YOUR" "$OVERLAY/secrets.yaml"; then
+    echo -e "\n${RED}ERROR: secrets.yaml contains placeholder values${NC}"
+    echo "You MUST update secrets.yaml with actual PRODUCTION credentials"
+    exit 1
+fi
+
+# Check if using dev credentials in prod
+if grep -q "_DEV_" "$OVERLAY/secrets.yaml"; then
+    echo -e "\n${RED}ERROR: Production secrets appear to contain DEV credentials${NC}"
+    echo "Use separate production credentials!"
+    exit 1
+fi
+
+echo -e "${GREEN}✓${NC} Secrets validated"
+
 # Preview manifests
 echo -e "\n${BLUE}Previewing manifests...${NC}"
 oc kustomize $OVERLAY | head -50
